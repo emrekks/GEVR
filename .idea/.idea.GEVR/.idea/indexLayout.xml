@@ -20,7 +20,6 @@
       <Path>Library/PackageCache/com.unity.xr.legacyinputhelpers@2.1.7</Path>
       <Path>Library/PackageCache/com.unity.xr.management@4.0.1</Path>
       <Path>Library/PackageCache/com.unity.xr.oculus@1.6.1</Path>
-      <Path>Library/PackageCache/com.valvesoftware.unity.openvr@ce01c4b52b1e-1619366272900</Path>
       <Path>Library/PackageCache/nuget.mono-cecil@0.1.6-preview</Path>
       <Path>Packages</Path>
       <Path>ProjectSettings</Path>
@@ -29,6 +28,7 @@
       <Path>.git</Path>
       <Path>.idea</Path>
       <Path>Library</Path>
+      <Path>Temp</Path>
       <Path>obj</Path>
     </explicitExcludes>
   </component>

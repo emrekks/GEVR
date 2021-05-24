@@ -24,7 +24,6 @@ public class AIRandomPeople : MonoBehaviour
         rnd2 = Random.Range(2, 4);
         _agent.speed = rnd2;
         
-        Debug.Log(rnd);
 
         if (rnd == 0)
         {
