@@ -4,6 +4,7 @@ using UnityEngine;
 
 public class GreenTicketButton : MonoBehaviour
 {
+    public GameObject GreenPrefab;
     // Start is called before the first frame update
     void Start()
     {
@@ -15,4 +16,13 @@ public class GreenTicketButton : MonoBehaviour
     {
         
     }
+
+    void OnTriggerEnter(Collider col)
+    {
+        if (col.gameObject.tag == "Hand")
+        {
+            Instantiate(GreenPrefab, new Vector3(10.06333f, 3.659114f, 5.168297f), Quaternion.Euler(0f, 31f, 0f));
+        }
+    }
+
 }

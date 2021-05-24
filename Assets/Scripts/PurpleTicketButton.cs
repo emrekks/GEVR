@@ -5,12 +5,12 @@ using UnityEngine;
 public class PurpleTicketButton : MonoBehaviour
 {
     public GameObject PurplePrefab;
-    public GameObject PurpleButton;
-    private Vector3 PrefabRef;
+
+
     // Start is called before the first frame update
     void Start()
     {
-        PrefabRef = new Vector3(PurpleButton.gameObject.transform.position.x, PurpleButton.gameObject.transform.position.y, PurpleButton.gameObject.transform.position.z);
+
     }
 
     // Update is called once per frame
@@ -19,11 +19,11 @@ public class PurpleTicketButton : MonoBehaviour
 
     }
 
-    void OnCollisionExit(Collision collision)
+    void OnTriggerEnter(Collider col)
     {
-        if (collision.gameObject.tag == "Hand")
+        if (col.gameObject.tag == "Hand")
         {
-            Instantiate(PurplePrefab, PrefabRef, Quaternion.identity);
+            Instantiate(PurplePrefab, new Vector3(9.744582f, 3.659114f, 4.671125f), Quaternion.Euler(0f,31f,0f));
         }
     }
 }
