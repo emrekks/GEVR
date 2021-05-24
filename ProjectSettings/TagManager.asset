@@ -10,6 +10,10 @@ TagManager:
   - People
   - PeopleRef
   - PeopleRef2
+  - PurpleTicket
+  - GreenTicket
+  - GreenTicketButon
+  - PurpleTicketButton
   layers:
   - Default
   - TransparentFX
