@@ -7,6 +7,9 @@ TagManager:
   - Money1
   - Money5
   - Money10
+  - People
+  - PeopleRef
+  - PeopleRef2
   layers:
   - Default
   - TransparentFX
