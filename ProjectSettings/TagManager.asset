@@ -15,6 +15,7 @@ TagManager:
   - GreenTicketButon
   - PurpleTicketButton
   - Hand
+  - CashBox
   layers:
   - Default
   - TransparentFX
