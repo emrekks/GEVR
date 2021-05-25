@@ -1,10 +1,14 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
+using TMPro;
 using UnityEngine;
 
 public class Case : MonoBehaviour
 {
     [SerializeField] private int MoneyAmount;
+
+    public TextMeshPro moneyText;
+    
     // Start is called before the first frame update
     void Start()
     {
@@ -14,7 +18,7 @@ public class Case : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        
+        moneyText.text = MoneyAmount + "$";
     }
 
     private void OnCollisionEnter(Collision collision)
