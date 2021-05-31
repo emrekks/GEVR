@@ -5,7 +5,17 @@ using UnityEngine;
 
 public class Case : MonoBehaviour
 {
-    [SerializeField] private int MoneyAmount;
+    #region Singleton
+
+    public static Case instance;
+    private void Awake()
+    {
+        instance = this;
+    }
+
+    #endregion
+    
+    public int MoneyAmount = 10;
 
     public TextMeshPro moneyText;
     
