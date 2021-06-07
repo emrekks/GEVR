@@ -1,8 +1,10 @@
 ﻿using System;
 using System.Collections;
 using System.Collections.Generic;
+using TMPro;
 using UnityEngine;
 using UnityEngine.AI;
+using UnityEngine.UI;
 using Random = UnityEngine.Random;
 
 public class AI : MonoBehaviour
@@ -17,11 +19,17 @@ public class AI : MonoBehaviour
     public bool inLine = false;
     public float radius;
 
+    private GameObject money5;
+    private GameObject money10;
+
     private Vector3 collision;
 
     public int rndTicket;
 
     private bool canGo = false;
+
+    public bool moneyGave = true;
+    private TextMeshProUGUI panelText;
     
 
 
@@ -32,6 +40,9 @@ public class AI : MonoBehaviour
         _agent = GetComponent<NavMeshAgent>();
         _agent.speed = peopleSpeed;
         rndTicket = Random.Range(0, 2);
+        money5 = GameObject.FindGameObjectWithTag("Money5");
+        money10 = GameObject.FindGameObjectWithTag("Money10");
+        panelText = GameObject.FindGameObjectWithTag("PeopleTalkText").GetComponent<TextMeshProUGUI>();
     }
 
     // Update is called once per frame
@@ -116,12 +127,18 @@ public class AI : MonoBehaviour
     {
         _agent.Stop();
 
-        StartCoroutine(Timer());
-    }
-
-    IEnumerator Timer()
-    {
-        yield return new WaitForSeconds(3f);
+        if (rndTicket == 0 && moneyGave)
+        {
+            Instantiate(money5, TicketArea.instance.ticketAreaRef.transform.position, Quaternion.identity);
+            panelText.text = "He Wants Purple Ticket";
+            moneyGave = false;
+        }
+        else if (rndTicket == 1 && moneyGave)
+        {
+            Instantiate(money10, TicketArea.instance.ticketAreaRef.transform.position, Quaternion.identity);
+            panelText.text = "He Wants Green Ticket";
+            moneyGave = false;
+        }
         
         if (TicketArea.instance.greenTicket)
         {
@@ -149,7 +166,16 @@ public class AI : MonoBehaviour
                 Case.instance.MoneyAmount -= 5;
             }
         }
+
+        //StartCoroutine(Timer());
     }
+
+    // IEnumerator Timer()
+    // {
+    //     yield return new WaitForSeconds(3f);
+    //     
+    //     
+    // }
 
     private void OnDrawGizmosSelected()
     {

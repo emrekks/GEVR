@@ -16,6 +16,7 @@ TagManager:
   - PurpleTicketButton
   - Hand
   - CashBox
+  - PeopleTalkText
   layers:
   - Default
   - TransparentFX

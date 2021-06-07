@@ -19,11 +19,13 @@ public class TicketArea : MonoBehaviour
 
     public bool greenTicket;
     public bool purpleTicket;
+
+    public GameObject ticketAreaRef;
     
     // Start is called before the first frame update
     void Start()
     {
-        
+        ticketAreaRef = gameObject;
     }
 
     // Update is called once per frame
