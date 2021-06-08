@@ -6,10 +6,9 @@ EditorBuildSettings:
   serializedVersion: 2
   m_Scenes:
   - enabled: 1
-    path: Assets/Scripts/Deneme.unity
+    path: Assets/Scenes/Deneme.unity
     guid: 1ab8fb7e75fbd21478c8e63c84bce060
   m_configObjects:
-    Unity.XR.Oculus.Settings: {fileID: 11400000, guid: 88da920d917d0da4b84f4b4b933a3888,
-      type: 2}
+    Unity.XR.Oculus.Settings: {fileID: 0}
     com.unity.xr.management.loader_settings: {fileID: 11400000, guid: 4c010247d7ad02e44b8bb8e5c429e5c3,
       type: 2}
