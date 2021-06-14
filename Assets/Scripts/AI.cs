@@ -81,10 +81,12 @@ public class AI : MonoBehaviour
         {
             _agent.speed = 0f;
             _agent.Stop();
+            _agent.enabled = false;
             //gameObject.GetComponent<NavMeshAgent>().enabled = false;
         }
         else
         {
+            _agent.enabled = true;
             _agent.speed = peopleSpeed;
             _agent.Resume();
             //gameObject.GetComponent<NavMeshAgent>().enabled = true;

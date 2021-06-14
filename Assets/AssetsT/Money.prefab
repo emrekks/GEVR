@@ -12,9 +12,9 @@ GameObject:
   - component: {fileID: 5297407539603111882}
   - component: {fileID: 5305424124333463796}
   - component: {fileID: 5266955817067979828}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: Cube
-  m_TagString: GreenTicket
+  m_TagString: Money1
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -109,9 +109,9 @@ GameObject:
   - component: {fileID: 5216315318921208868}
   - component: {fileID: 5216315343551252586}
   - component: {fileID: 5216315318251256324}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: Money
-  m_TagString: Untagged
+  m_TagString: Money1
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -125,7 +125,7 @@ Transform:
   m_GameObject: {fileID: 5328493674496753738}
   m_LocalRotation: {x: 0, y: 0.26723832, z: 0, w: 0.9636305}
   m_LocalPosition: {x: 10.046, y: 3.6488, z: 5.155}
-  m_LocalScale: {x: 0.32263714, y: -0.0057075075, z: 0.22220822}
+  m_LocalScale: {x: 5.77585, y: -0.03835986, z: 4.574174}
   m_Children:
   - {fileID: 5332020887121569698}
   m_Father: {fileID: 0}
