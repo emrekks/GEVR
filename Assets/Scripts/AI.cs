@@ -19,18 +19,21 @@ public class AI : MonoBehaviour
     public bool inLine = false;
     public float radius;
 
-    private GameObject money5;
-    private GameObject money10;
+    public GameObject money1;
+    public GameObject money5;
+    public GameObject money10;
 
     private Vector3 collision;
 
     public int rndTicket;
 
+
     private bool canGo = false;
 
     public bool moneyGave = true;
     private TextMeshProUGUI panelText;
-    
+    private bool losemoney = false;
+
 
 
     // Start is called before the first frame update
@@ -40,8 +43,6 @@ public class AI : MonoBehaviour
         _agent = GetComponent<NavMeshAgent>();
         _agent.speed = peopleSpeed;
         rndTicket = Random.Range(0, 2);
-        money5 = GameObject.FindGameObjectWithTag("Money5");
-        money10 = GameObject.FindGameObjectWithTag("Money10");
         panelText = GameObject.FindGameObjectWithTag("PeopleTalkText").GetComponent<TextMeshProUGUI>();
     }
 
@@ -79,20 +80,21 @@ public class AI : MonoBehaviour
 
         if (frontFull)
         {
-            _agent.speed = 0f;
-            _agent.Stop();
             _agent.enabled = false;
+            //_agent.speed = 0f;
+            //_agent.Stop();
             //gameObject.GetComponent<NavMeshAgent>().enabled = false;
         }
         else
         {
             _agent.enabled = true;
-            _agent.speed = peopleSpeed;
-            _agent.Resume();
+            //_agent.speed = peopleSpeed;
+            //_agent.Resume();
             //gameObject.GetComponent<NavMeshAgent>().enabled = true;
         }
-        
-        
+
+
+
         RaycastHit hit;
 
         //Vector3 p1 = transform.position;
@@ -100,7 +102,7 @@ public class AI : MonoBehaviour
 
         // Cast a sphere wrapping character controller 10 meters forward
         // to see if it is about to hit anything.
-        if (Physics.SphereCast(transform.position,radius,transform.forward,out hit,1f))
+        if (Physics.SphereCast(transform.position, radius, transform.forward, out hit, 1f))
         {
             distanceToObstacle = hit.distance;
             collision = hit.point;
@@ -116,7 +118,23 @@ public class AI : MonoBehaviour
         }
     }
 
-    
+    //private void OnTriggerStay(Collider other)
+    //{
+    //    if (other.gameObject.CompareTag("People"))
+    //    {
+    //        frontFull = true;
+    //    }
+    //}
+
+    //private void OnTriggerExit(Collider other)
+    //{
+    //    if (other.gameObject.CompareTag("People"))
+    //    {
+    //        frontFull = false;
+    //    }
+    //}
+
+
     void FaceTowards()
     {
         Vector3 dir = _standReferance.position - transform.position;
@@ -127,32 +145,46 @@ public class AI : MonoBehaviour
 
     void PeopleInLine()
     {
-        _agent.Stop();
+        //_agent.Stop();
 
         if (rndTicket == 0 && moneyGave)
         {
-            Instantiate(money5, TicketArea.instance.ticketAreaRef.transform.position, Quaternion.identity);
-            panelText.text = "He Wants Purple Ticket";
+            Instantiate(money1, TicketArea.instance.ticketAreaRef.transform.position, Quaternion.identity);
+            //panelText.text = "He Wants Purple Ticket";
             moneyGave = false;
+            if (!moneyGave)
+            {
+                panelText.text = "He Wants Purple Ticket";
+                return;
+            }
         }
-        else if (rndTicket == 1 && moneyGave)
+
+        if (rndTicket == 1 && moneyGave)
         {
-            Instantiate(money10, TicketArea.instance.ticketAreaRef.transform.position, Quaternion.identity);
-            panelText.text = "He Wants Green Ticket";
+            Instantiate(money5, TicketArea.instance.ticketAreaRef.transform.position, Quaternion.identity);
+            //panelText.text = "He Wants Green Ticket";
             moneyGave = false;
+            if (!moneyGave)
+            {
+                panelText.text = "He Wants Green Ticket";
+                return;
+            }
         }
+
         
         if (TicketArea.instance.greenTicket)
         {
             //0 Purple 1 Green
-            if (rndTicket == 0)
+            if (rndTicket == 0 && !losemoney)
             {
                 Case.instance.MoneyAmount -= 5;
+                losemoney = true;
             }
             
             else if (rndTicket == 1)
             {
                 canGo = true;
+                TicketArea.instance.greenTicket = false;
             }
         }
         
@@ -161,11 +193,13 @@ public class AI : MonoBehaviour
             if (rndTicket == 0)
             {
                 canGo = true;
+                TicketArea.instance.purpleTicket = false;
             }
             
-            else if (rndTicket == 1)
+            else if (rndTicket == 1 && !losemoney)
             {
                 Case.instance.MoneyAmount -= 5;
+                losemoney = true;
             }
         }
 
@@ -182,6 +216,6 @@ public class AI : MonoBehaviour
     private void OnDrawGizmosSelected()
     {
         Gizmos.color = Color.red;
-        Gizmos.DrawWireSphere(collision,radius);
+        Gizmos.DrawWireSphere(collision, radius);
     }
 }

@@ -25,7 +25,7 @@ public class TicketArea : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-        ticketAreaRef = gameObject;
+        //ticketAreaRef = gameObject;
     }
 
     // Update is called once per frame

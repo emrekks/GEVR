@@ -17,6 +17,9 @@ TagManager:
   - Hand
   - CashBox
   - PeopleTalkText
+  - projectile
+  - FxTemporaire
+  - PeopleBox
   layers:
   - Default
   - TransparentFX
